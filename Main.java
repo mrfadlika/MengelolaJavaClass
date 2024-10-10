@@ -25,13 +25,13 @@ class Bank {
     public void printNasabahInfo() {
         System.out.println("Jumlah : " + jumlahNasabah);
         for (int i = 0; i < jumlahNasabah; i++) {
-            nasabah.get(i).printInfo(i + 1); // Meminta Nasabah untuk mencetak informasi dirinya
+            nasabah.get(i).printInfo(i + 1);
         }
     }
 }
 
 class Nasabah {
-    private String nama; // Hanya satu variabel untuk menyimpan nama lengkap
+    private String nama;
     private List<Tabungan> tabungan;
 
     public Nasabah(String nama) {
@@ -43,14 +43,12 @@ class Nasabah {
         this.tabungan.add(tabungan);
     }
 
-    // Tambahkan metode ini untuk mencetak informasi nasabah
     public void printInfo(int nomorNasabah) {
         double totalSaldo = 0;
         for (Tabungan t : tabungan) {
             totalSaldo += t.getSaldo();
         }
-        // Cetak nama lengkap sebagai bagian dari output
-        System.out.printf("Nasabah %d : %s ; Saldo = %.2f\n",
+        System.out.printf("Nasabah  ke-%d : %s ; Saldo = %.2f\n",
                 nomorNasabah, nama, totalSaldo);
     }
 }
@@ -71,15 +69,23 @@ public class Main {
     public static void main(String[] args) {
         Bank bank = new Bank();
 
-        bank.tambahNasabah("Raffi Fadlika");
-        bank.tambahNasabah("Mayersi Putra");
+        bank.tambahNasabah("Agus Daryanto");
+        bank.tambahNasabah("Tuti Irawan");
+        bank.tambahNasabah("Ani Ratna");
+        bank.tambahNasabah("Bambang Darwaman");
+
 
         Nasabah nasabah1 = bank.getNasabah(0);
-        nasabah1.tambahTabungan(new Tabungan(1000000));
-        nasabah1.tambahTabungan(new Tabungan(500000));
+        nasabah1.tambahTabungan(new Tabungan(5000));
 
         Nasabah nasabah2 = bank.getNasabah(1);
-        nasabah2.tambahTabungan(new Tabungan(2000000));
+        nasabah2.tambahTabungan(new Tabungan(7000));
+
+        Nasabah nasabah3 = bank.getNasabah(2);
+        nasabah3.tambahTabungan(new Tabungan(4000));
+
+        Nasabah nasabah4 = bank.getNasabah(3);
+        nasabah4.tambahTabungan(new Tabungan(6500));
 
         bank.printNasabahInfo();
     }
